@@ -101,14 +101,14 @@ class TestSuiteExecutor:
             logging.debug(f'Skipping instrumentation for {jar_file_name} since it already exists')
         else:
             logging.debug(f'Starting instrumentation of jar {target_jar}')
-            self._jacoco.execInstrumentJar(target_jar, jars_directory)
+            self._jacoco.instrument_jar(target_jar, jars_directory)
             logging.debug(f'Successfully instrumented jar {target_jar}')
 
         logging.debug('Starting execution of test suite for coverage collection')
         self._execute_junit_5(test_suite, instrumented_jar_path, [f"-m={x}" for x in test_cases])
         logging.debug('Finished execution of test suite for coverage collection')
 
-        self._jacoco.generateReportHtml(test_suite.path, target_jar)
+        self._jacoco.generate_html_report(test_suite.path, target_jar)
 
         return path.join(test_suite.path, 'report')
 

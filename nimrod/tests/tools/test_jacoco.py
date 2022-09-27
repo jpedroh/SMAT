@@ -22,7 +22,8 @@ class TestJacoco(TestCase):
         jarSemModificacaoes = "/home/vinicius/Documentos/UFPE/TCC/mergedataset/cloud-slang/20bac30d9bd76569aa6a4fa1e8261c1a9b5e6f76/original/base/cloudslang-all-0.7.50-SNAPSHOT-jar-with-dependencies.jar"
         destinoJarInstrumentado = "/home/vinicius/Documentos/UFPE/TCC/Resultados/CloudSlang/cloudslang-all/dest"
 
-        self.jacoco.execInstrumentJar(jarSemModificacaoes, destinoJarInstrumentado)
+        self.jacoco.instrument_jar(
+            jarSemModificacaoes, destinoJarInstrumentado)
 
     @unittest.skip("invalid inputs")
     def test_runTest(self):
@@ -31,7 +32,7 @@ class TestJacoco(TestCase):
         suiteClass = "/home/vinicius/Documentos/UFPE/TCC/Resultados/CloudSlang/cloudslang-all/Class/"
         test_class = "RegressionTest0"
 
-        self.jacoco.createJacocoExec(projectJar, suiteClass, test_class)
+        self.jacoco.create_jacoco_exec(projectJar, suiteClass, test_class)
 
     @unittest.skip("invalid inputs")
     def test_generateReport(self):
@@ -39,4 +40,4 @@ class TestJacoco(TestCase):
         classFile = "/home/vinicius/Documentos/UFPE/TCC/Projetos/cloud-slang/cloudslang-all/target/classes/io/cloudslang/lang/api"
         csvFile = "/home/vinicius/Documentos/UFPE/TCC/Resultados/CloudSlang/cloudslang-all/dest/report.csv"
 
-        self.jacoco.generateReport(jacocoExecDir, classFile, csvFile)
+        self.jacoco.generate_csv_report(jacocoExecDir, classFile, csvFile)

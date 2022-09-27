@@ -105,7 +105,7 @@ class Coverage_Report(Setup_tool):
 
         # -1 pois existe um ultimo : ao final do evo.project_dep.classes_dir
         for j in range(len(listaJar) - 1):
-            jacoco.execInstrumentJar(listaJar[j], path_suite)
+            jacoco.instrument_jar(listaJar[j], path_suite)
             nomeJarInstrumentado = listaJar[j].split(
                 "/")  # recupera o nome do jar
             listaJarInstrumentados = listaJarInstrumentados + path_suite + "/" + nomeJarInstrumentado[len(
@@ -125,7 +125,7 @@ class Coverage_Report(Setup_tool):
         listaJar = list(filter(lambda x: x != '', listaJar))
 
         print("Gerando report em html")
-        jacoco.generateReportHtml(path_suite, listaJar, classeTarget)
+        jacoco.generate_html_report(path_suite, listaJar, classeTarget)
 
         print("Gerando analise de todas classes do projeto")
         dadosReportProjeto = self.reportProjetoCompleto(path_suite)
